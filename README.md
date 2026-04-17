@@ -77,7 +77,7 @@ La comparación entre la señal emulada (Parte A) y la señal de paciente (Parte
 Mientras que la señal emulada mantuvo valores de frecuencia estables, la señal real mostró la variabilidad natural y el decaimiento esperado, lo que confirma la calidad de la adquisición y el montaje experimental realizado.
 Se concluye que, aunque las técnicas espectrales son altamente precisas, su implementación en escenarios no controlados (como entrenamientos de atletas de alto rendimiento) presenta desafíos técnicos significativos. Factores como el ruido ambiental, la sudoración (que altera la impedancia de los electrodos) y los movimientos bruscos requieren algoritmos de filtrado más avanzados y sensores inalámbricos para garantizar la fiabilidad del diagnóstico de fatiga en tiempo real.
 # Preguntas para la Discusión
-##1. ¿Cambian los valores de frecuencia media y mediana a medida que el músculo se acerca a la fatiga?
+## 1. ¿Cambian los valores de frecuencia media y mediana a medida que el músculo se acerca a la fatiga?
 Sí. Se observa una disminución progresiva en ambos valores. Mientras que en una señal ideal estos valores permanecen casi constantes tras la estabilización inicial, en una señal real de paciente, la pendiente de caída de la frecuencia media es un indicador directo del ritmo de fatiga del grupo muscular evaluado.
 ## 2. ¿A qué podría atribuirse este cambio?
 Se atribuye a dos factores principales:
