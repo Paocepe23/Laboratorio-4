@@ -12,7 +12,12 @@ El laboratorio se divide en tres fases:
 ## Fase A
 Uso de un generador de señales biológicas para establecer una línea base de comportamiento ideal sin ruido.
 ## Fase B 
+<img width="200" height="600" alt="WhatsApp Image 2026-04-16 at 8 07 42 PM" src="https://github.com/user-attachments/assets/13f2d3ca-aecb-453a-b402-6a32acd2b0cf" />
+
+Obtencion de la señal en el laboratorio.
+
 Adquisición de EMG sobre el antebrazo realizando contracciones repetidas hasta el fallo muscular.
+
 ## Fase C 
 Aplicación de la FFT para comparar los espectros de amplitud entre las primeras contracciones "músculo fresco" y las últimas "músculo fatigado".
 # Marco conceptual
@@ -73,10 +78,17 @@ Mientras que la señal emulada mantuvo valores de frecuencia estables, la señal
 Se concluye que, aunque las técnicas espectrales son altamente precisas, su implementación en escenarios no controlados (como entrenamientos de atletas de alto rendimiento) presenta desafíos técnicos significativos. Factores como el ruido ambiental, la sudoración (que altera la impedancia de los electrodos) y los movimientos bruscos requieren algoritmos de filtrado más avanzados y sensores inalámbricos para garantizar la fiabilidad del diagnóstico de fatiga en tiempo real.
 # Preguntas para la Discusión
 ##1. ¿Cambian los valores de frecuencia media y mediana a medida que el músculo se acerca a la fatiga?
-Sí. Se observa una disminución progresiva en ambos valores. Mientras que en una señal ideal (emulada) estos valores permanecen casi constantes tras la estabilización inicial, en una señal real de paciente, la pendiente de caída de la frecuencia media es un indicador directo del ritmo de fatiga del grupo muscular evaluado.
+Sí. Se observa una disminución progresiva en ambos valores. Mientras que en una señal ideal estos valores permanecen casi constantes tras la estabilización inicial, en una señal real de paciente, la pendiente de caída de la frecuencia media es un indicador directo del ritmo de fatiga del grupo muscular evaluado.
 ## 2. ¿A qué podría atribuirse este cambio?
 Se atribuye a dos factores principales:
-Fisiológico: La ralentización de los potenciales de acción por fatiga metabólica.
-Reclutamiento: La sincronización de las unidades motoras. Cuando el músculo se agota, las unidades motoras tienden a disparar de forma más rítmica y conjunta para intentar sostener la fuerza, lo que aumenta la energía en las frecuencias bajas del espectro.
+La ralentización de los potenciales de acción por fatiga metabólica. 
+La sincronización de las unidades motoras. Cuando el músculo se agota, las unidades motoras tienden a disparar de forma más rítmica y conjunta para intentar sostener la fuerza, lo que aumenta la energía en las frecuencias bajas del espectro.
 ## 3. ¿Cómo justifica el uso de la Transformada de Fourier en terapias de rehabilitación?
-El uso de la FFT es fundamental porque permite cuantificar la recuperación muscular de manera objetiva. En rehabilitación, no basta con saber si el paciente "siente" fuerza; el análisis espectral permite al clínico observar si el espectro de la señal está volviendo a rangos de frecuencia normales (altos), lo que indica que las fibras musculares rápidas están recuperando su funcionalidad y velocidad de conducción.
+El uso de la FFT es fundamental porque permite cuantificar la recuperación muscular de manera objetiva. En rehabilitación, no basta con saber si el paciente siente fuerza el análisis espectral permite al clínico observar si el espectro de la señal está volviendo a rangos de frecuencia normales (altos), lo que indica que las fibras musculares rápidas están recuperando su funcionalidad y velocidad de conducción.
+# Declaración de uso de herramientas de IA
+
+Durante la elaboración de este laboratorio se utilizaron herramientas de inteligencia artificial basadas en modelos de lenguaje como apoyo en tareas de consulta, revisión de redacción y organización del código.
+
+Estas herramientas se emplearon únicamente como asistencia técnica para estructuración del documento, aclaración de conceptos y verificación de implementaciones en Python.
+
+Los diagramas de flujo fueron generados inicialmente mediante herramientas compatibles con Mermaid , y posteriormente ajustados para representar la lógica del programa.
