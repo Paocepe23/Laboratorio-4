@@ -162,9 +162,10 @@ for i, seg in enumerate(segmentos):
     plt.figure(figsize=(12, 5))
     plt.plot(freqs, potencia_db, linewidth=1, color='navy')
     plt.xlabel('Frecuencia (Hz)')
-    plt.ylabel('Potencia (dB normalizada)')
+    plt.ylabel('Potencia (dB)')  # ← CAMBIO 1
     plt.title(f'Espectro FFT - Contracción {i+1}')
     plt.xlim([0, FS/2])
+    plt.ylim([-80, 5])           # ← CAMBIO 2
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / f'04_fft_contraccion_{i+1:02d}.png', dpi=300)
     plt.close()
