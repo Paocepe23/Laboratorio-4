@@ -334,7 +334,7 @@ Aplicación de la FFT para comparar los espectros de amplitud entre las primeras
 <img width="3869" height="1467" alt="02_comparacion_primera_ultima" src="https://github.com/user-attachments/assets/9bd4c179-360f-44dd-8690-e14cc3ee4190" />
 <img width="<img width="3600" height="1200" alt="01_espectro_contraccion_04" src="https://github.com/user-attachments/assets/97032343-139b-41c9-a880-a1f8e7fd3f7a" />
 <img width="3600" height="1200" alt="01_espectro_contraccion_03" src="https://github.com/user-attachments/assets/db47f947-3ca6-4b8d-b95b-e9b4c2800b9f" />
-3600" height="1200" alt="01_espectro_contraccion_05" src="https://github.com/user-attachments/assets/657eecfc-d5e4-4950-b618-f516d8b61b5e" />
+<img width=3600" height="1200" alt="01_espectro_contraccion_05" src="https://github.com/user-attachments/assets/657eecfc-d5e4-4950-b618-f516d8b61b5e" />
 
 **Parámetros:**
 - Frecuencia de muestreo (FS): 1000 Hz  
