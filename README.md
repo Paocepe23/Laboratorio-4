@@ -209,20 +209,6 @@ Obtencion de la señal en el laboratorio.
 Adquisición de EMG sobre el antebrazo realizando contracciones repetidas hasta el fallo muscular.
 ## Análisis – Parte B (Señal EMG real)
 
-En la señal EMG real se observa inicialmente la presencia de ruido y componentes no deseados, los cuales son atenuados mediante la aplicación de un filtro pasa banda (20–450 Hz). La señal filtrada presenta una forma más limpia y centrada, conservando únicamente la actividad muscular relevante.
-
-Tras la segmentación en cinco contracciones, se evidencia una variación progresiva en las características espectrales de la señal. A diferencia de la señal emulada, los segmentos muestran cambios más notorios en su comportamiento, reflejando la naturaleza fisiológica del músculo.
-
-El análisis de la Frecuencia Media (MF) y la Frecuencia Mediana (MPF) muestra una tendencia decreciente:
-
-- MF: 129.92 Hz → 122.30 Hz (−5.87%)
-- MPF: 115.56 Hz → 108.67 Hz (−5.96%)
-
-Esta disminución indica un desplazamiento del espectro de potencia hacia bajas frecuencias, lo cual es un indicador característico de fatiga muscular.
-
-Desde el punto de vista fisiológico, este comportamiento se asocia con la disminución de la velocidad de conducción de las fibras musculares, la acumulación de metabolitos como el lactato y la reducción de ATP, lo que afecta la respuesta del músculo durante contracciones repetidas.
-
-En conjunto, los resultados confirman la presencia de fatiga muscular en la señal analizada, validando el uso de parámetros espectrales como MF y MPF para su detección.
 
 ## Fase C 
 
