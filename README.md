@@ -94,7 +94,26 @@ AF --> AG[Escribir reporte open write]
 
 AG --> Z([Fin])
 ```
-Uso de un generador de señales biológicas para establecer una línea base de comportamiento ideal sin ruido.
+## Análisis – Parte A (Señal EMG emulada)
+
+A partir de la señal EMG sintética generada, se realizó un análisis tanto en el dominio del tiempo como en el dominio de la frecuencia con el objetivo de establecer una línea base de referencia sin presencia de fatiga muscular.
+
+En la señal bruta se observa un comportamiento oscilatorio con amplitudes relativamente constantes a lo largo del tiempo, sin presencia evidente de ruido significativo ni artefactos externos. La señal presenta una distribución uniforme, característica de una señal emulada controlada.
+
+Al segmentar la señal en cinco contracciones de igual duración, se evidencia que todas mantienen una estructura similar en términos de amplitud y variabilidad, lo cual confirma la estabilidad del generador de señal. No se observan cambios abruptos entre segmentos que sugieran alteraciones fisiológicas.
+
+En el análisis espectral, se calcularon la Frecuencia Media (MF) y la Frecuencia Mediana (MPF) para cada contracción. Los resultados muestran una ligera tendencia decreciente en ambos parámetros:
+
+- MF: 130.87 Hz → 122.86 Hz (−6.12%)
+- MPF: 115.67 Hz → 108.67 Hz (−6.05%)
+
+Aunque se observa una disminución progresiva, esta variación es relativamente pequeña y no corresponde a un proceso real de fatiga muscular. En señales EMG reales, la fatiga suele generar una caída más pronunciada y acompañada de cambios en la morfología de la señal.
+
+La leve disminución observada puede atribuirse a variaciones internas del generador de señal o a efectos numéricos del procesamiento (segmentación y FFT), más que a un fenómeno fisiológico real.
+
+En conjunto, los resultados confirman que la señal emulada presenta un comportamiento estable en el dominio espectral, por lo que es adecuada como referencia base para comparar con señales reales. Esta estabilidad permite validar que cualquier cambio significativo observado en las fases posteriores (Parte B y C) estará asociado a fenómenos fisiológicos como la fatiga muscular y no a artefactos del procesamiento.
+
+---o.
 ## Fase B 
 
 En esta parte se analiza una señal EMG real adquirida de un sujeto durante contracciones musculares repetidas. Inicialmente, la señal es cargada desde un archivo .txt y se aplica un filtro pasa banda (20–450 Hz) para eliminar ruido y artefactos.
@@ -188,6 +207,22 @@ AK --> Z([Fin])
 Obtencion de la señal en el laboratorio.
 
 Adquisición de EMG sobre el antebrazo realizando contracciones repetidas hasta el fallo muscular.
+## Análisis – Parte B (Señal EMG real)
+
+En la señal EMG real se observa inicialmente la presencia de ruido y componentes no deseados, los cuales son atenuados mediante la aplicación de un filtro pasa banda (20–450 Hz). La señal filtrada presenta una forma más limpia y centrada, conservando únicamente la actividad muscular relevante.
+
+Tras la segmentación en cinco contracciones, se evidencia una variación progresiva en las características espectrales de la señal. A diferencia de la señal emulada, los segmentos muestran cambios más notorios en su comportamiento, reflejando la naturaleza fisiológica del músculo.
+
+El análisis de la Frecuencia Media (MF) y la Frecuencia Mediana (MPF) muestra una tendencia decreciente:
+
+- MF: 129.92 Hz → 122.30 Hz (−5.87%)
+- MPF: 115.56 Hz → 108.67 Hz (−5.96%)
+
+Esta disminución indica un desplazamiento del espectro de potencia hacia bajas frecuencias, lo cual es un indicador característico de fatiga muscular.
+
+Desde el punto de vista fisiológico, este comportamiento se asocia con la disminución de la velocidad de conducción de las fibras musculares, la acumulación de metabolitos como el lactato y la reducción de ATP, lo que afecta la respuesta del músculo durante contracciones repetidas.
+
+En conjunto, los resultados confirman la presencia de fatiga muscular en la señal analizada, validando el uso de parámetros espectrales como MF y MPF para su detección.
 
 ## Fase C 
 
@@ -268,6 +303,49 @@ flowchart TD
     AB --> Z([Fin])
 ```
 Aplicación de la FFT para comparar los espectros de amplitud entre las primeras contracciones "músculo fresco" y las últimas "músculo fatigado".
+
+## Análisis – Parte C (Análisis espectral mediante FFT)
+
+**a. Aplicación de la FFT a cada contracción**
+
+Se aplicó la Transformada Rápida de Fourier (FFT) a cada una de las contracciones segmentadas de la señal EMG real, permitiendo transformar la señal del dominio del tiempo al dominio de la frecuencia. Esto facilitó el análisis del contenido espectral asociado a la actividad muscular en diferentes etapas del esfuerzo.
+
+---
+
+**b. Espectro de amplitud (frecuencia vs. magnitud)**
+
+A partir de la FFT, se obtuvieron los espectros de amplitud para cada contracción. Estos espectros muestran cómo se distribuye la energía de la señal en función de la frecuencia, permitiendo identificar las bandas dominantes y su evolución a lo largo del tiempo. Se observa que la energía se concentra principalmente en un rango intermedio de frecuencias, característico de señales EMG.
+
+---
+
+**c. Comparación entre contracciones iniciales y finales**
+
+Al comparar los espectros de las primeras contracciones con los de las últimas, se evidencia un cambio progresivo en la distribución espectral. Las contracciones iniciales presentan mayor contenido en frecuencias medias-altas, mientras que en las contracciones finales se observa una redistribución de la energía hacia frecuencias más bajas.
+
+---
+
+**d. Reducción del contenido de alta frecuencia**
+
+Se identifica una disminución del contenido de alta frecuencia a medida que avanza el número de contracciones. Este fenómeno es consistente con el comportamiento esperado durante la fatiga muscular, donde la actividad eléctrica del músculo pierde componentes rápidos debido a la disminución en la velocidad de conducción de las fibras musculares.
+
+---
+
+**e. Desplazamiento del pico espectral**
+
+El análisis muestra un desplazamiento del pico espectral desde aproximadamente 82.6 Hz en la primera contracción hasta 66.6 Hz en la última, lo que representa una reducción de 16 Hz. De manera similar, la Frecuencia Media (MF) y la Frecuencia Mediana (MPF) también presentan disminuciones de 7.6 Hz y 6.9 Hz respectivamente.
+
+Este desplazamiento hacia frecuencias más bajas está directamente relacionado con el esfuerzo sostenido, ya que refleja cambios fisiológicos como la acumulación de metabolitos (lactato, iones H⁺) y la reducción de ATP, los cuales afectan la respuesta eléctrica del músculo.
+
+---
+
+**f. Conclusiones del análisis espectral**
+
+El análisis espectral mediante FFT demuestra ser una herramienta eficaz para la evaluación de la fatiga muscular en señales electromiográficas. La disminución de parámetros como MF, MPF y la frecuencia pico, junto con el desplazamiento del espectro hacia bajas frecuencias, constituyen indicadores confiables del estado del músculo.
+
+Estos resultados evidencian que el procesamiento en el dominio de la frecuencia permite detectar cambios fisiológicos que no son fácilmente observables en el dominio del tiempo, lo que lo convierte en una técnica clave para aplicaciones en diagnóstico, monitoreo y rehabilitación muscular.
+
+---
+
 # Marco conceptual
 ##Fisiología.
 La fatiga muscular se define como la disminución de la capacidad del músculo para generar fuerza o mantener una contracción eficaz. 
