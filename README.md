@@ -381,7 +381,7 @@ En conclusión, el análisis FFT permite visualizar y cuantificar el fenómeno d
 
 # Marco conceptual
 
-##Fisiología.
+## Fisiología.
 
 La fatiga muscular se define como la disminución de la capacidad del músculo para generar fuerza o mantener una contracción eficaz. 
 Durante el ejercicio intenso, se acumula lactato y disminuye el adenosín trifosfato (ATP).
