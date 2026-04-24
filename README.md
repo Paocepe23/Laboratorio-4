@@ -411,7 +411,7 @@ Punto de corte superior (450 Hz) eliminando ruido electrónico de alta frecuenci
 
 # Procedimiento
 
-##PARTE A - 
+## PARTE A 
 
 Captura de la Señal EmuladaEsta fase busca establecer un punto de comparación con una señal ideal que no presenta fatiga real.
 Ajustar el generador de señales biológicas en modo EMG para simular cinco contracciones musculares voluntarias.
@@ -421,7 +421,7 @@ Determinar la Frecuencia Media (MNF).
 Determinar la Frecuencia Mediana (MDF).
 Tabular los resultados y graficar la evolución de las frecuencias para verificar su estabilidad.
 
-##PARTE B 
+## PARTE B 
 
 Captura de la Señal de PacienteAquí es donde observarás el fenómeno fisiológico real de la fatiga.
 Colocar electrodos de superficie sobre un grupo muscular en el antebrazo asegurando que la piel esté limpia y seca para reducir el ruido
@@ -431,7 +431,7 @@ Dividir la señal total en el número exacto de contracciones realizadas.
 Calcular la frecuencia media y mediana para cada una de estas contracciones
 Graficar la evolución de MNF y MDF y discutir cómo se relacionan con la fisiología del músculo fatigado.
 
-##PARTE C 
+## PARTE C 
 
 Análisis Espectral mediante FFTEn esta fase utilizarás herramientas matemáticas avanzadas para visualizar el cambio de energía en la señal.
 Aplicar la FFT a cada una de las contracciones segmentadas de la señal real.
