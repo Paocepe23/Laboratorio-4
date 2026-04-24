@@ -95,14 +95,15 @@ AF --> AG[Escribir reporte TXT]
 AG --> Z([Fin])
 ```
 ## resultados 
-<img width="4169" height="1766" alt="02_segmentos" src="https://github.com/user-attachments/assets/37e310a5-74c2-4ae2-be5a-1501619a108f" />
-<img width="4169" height="1466" alt="01_señal_bruta" src="https://github.com/user-attachments/assets/e430f528-71b5-412c-a846-7d710ce34231" />
-<img width="4169" height="1466" alt="03_evolucion_frecuencias" src="https://github.com/user-attachments/assets/56ef3f92-c0f9-493c-a3b5-7adef143c444" />
-<img width="3569" height="1466" alt="04_fft_contraccion_01" src="https://github.com/user-attachments/assets/0fe36a40-a95f-41a1-90a6-f40c10a82bf5" />
-<img width="3569" height="1466" alt="04_fft_contraccion_02" src="https://github.com/user-attachments/assets/ec1314f8-66a7-49b1-b545-081ce425c1d0" />
-<img width="3569" height="1466" alt="04_fft_contraccion_03" src="https://github.com/user-attachments/assets/32ae142b-b09c-47c5-b566-390b5b8ccf0a" />
-<img width="3569" height="1466" alt="04_fft_contraccion_04" src="https://github.com/user-attachments/assets/b4c2b496-07db-48b6-91b8-b7c0886d9728" />
-<img width="3569" height="1466" alt="04_fft_contraccion_05" src="https://github.com/user-attachments/assets/3a8740cf-b140-45e3-adfc-4a0edda5be12" />
+<img width="3569" height="2367" alt="04_fft_contraccion_01" src="https://github.com/user-attachments/assets/95665ad2-27e2-4e3a-b277-9e7f07424653" />
+<img width="4170" height="1467" alt="03_evolucion_frecuencias" src="https://github.com/user-attachments/assets/ee217789-3e02-496b-9723-842913e92f94" />
+<img width="4170" height="1767" alt="02_segmentos" src="https://github.com/user-attachments/assets/010a7c9c-f6dd-4aa3-9913-e502e2a2666b" />
+<img width="4170" height="1467" alt="01_señal_bruta" src="https://github.com/user-attachments/assets/09d36893-fb61-4dce-a85b-c56091f72b54" />
+<img width="3569" height="2367" alt="04_fft_contraccion_05" src="https://github.com/user-attachments/assets/d1a90cbf-7f99-414e-abd9-c84bf29f714d" />
+<img width="3569" height="2367" alt="04_fft_contraccion_04" src="https://github.com/user-attachments/assets/5d8094c7-8ee7-4fe4-b706-c41aa6f63d88" />
+<img width="3569" height="2367" alt="04_fft_contraccion_03" src="https://github.com/user-attachments/assets/30562a0e-e3b3-4f21-a09d-1490a32857e5" />
+<img width="3569" height="2367" alt="04_fft_contraccion_02" src="https://github.com/user-attachments/assets/cbf2e2bb-fe66-406f-a526-c0149f3c3aad" />
+
 
 
 - Frecuencia de muestreo (FS): 1000 Hz  
@@ -223,15 +224,15 @@ Obtencion de la señal en el laboratorio.
 
 Adquisición de EMG sobre el antebrazo realizando contracciones repetidas hasta el fallo muscular.
 ##Resultados
-<img width="4169" height="1465" alt="05_evolucion_frecuencias" src="https://github.com/user-attachments/assets/b5150d27-b1bd-4a4d-9e14-e7fb3a69be2b" />
-<img width="3600" height="1500" alt="04_fft_contraccion_01" src="https://github.com/user-attachments/assets/13541170-3704-4f43-ae7b-3a269066c2cf" />
-<img width="4169" height="1767" alt="03_segmentos" src="https://github.com/user-attachments/assets/939b74d0-7edf-451e-a1c7-4a6b71dd6799" />
-<img width="4169" height="2366" alt="02_comparacion_filtrado" src="https://github.com/user-attachments/assets/abee5703-8e98-4a04-a1ef-85c50abf940e" />
-<img width="4169" height="1467" alt="01_señal_bruta" src="https://github.com/user-attachments/assets/0ae4cbcf-df84-471a-b419-170b5a132bbc" />
-<img width="3600" height="1500" alt="04_fft_contraccion_05" src="https://github.com/user-attachments/assets/90547a88-cd03-4b8f-a34f-3beb87b64f80" />
-<img width="3600" height="1500" alt="04_fft_contraccion_04" src="https://github.com/user-attachments/assets/e1695f1c-eab8-40eb-a00e-54508a02b21e" />
-<img width="3600" height="1500" alt="04_fft_contraccion_03" src="https://github.com/user-attachments/assets/f114f367-8911-4f83-8a6c-90984a755860" />
-<img width="3600" height="1500" alt="04_fft_contraccion_02" src="https://github.com/user-attachments/assets/e52a904b-323d-4188-abb1-7b5f85a84f47" />
+<img width="4169" height="1465" alt="05_evolucion_frecuencias" src="https://github.com/user-attachments/assets/b43caf10-3cac-46d3-bbfb-b29e22cb7535" />
+<img width="3600" height="1500" alt="04_fft_contraccion_05" src="https://github.com/user-attachments/assets/084a781e-f9a7-4c4f-9d18-4c3f4ee2e9f7" />
+<img width="3600" height="1500" alt="04_fft_contraccion_04" src="https://github.com/user-attachments/assets/921da335-6bec-477f-8a34-95eaf4da14ea" />
+<img width="3600" height="1500" alt="04_fft_contraccion_03" src="https://github.com/user-attachments/assets/fc0ca925-067d-4fda-a8c4-b1bc9bdb3144" />
+<img width="3600" height="1500" alt="04_fft_contraccion_02" src="https://github.com/user-attachments/assets/1d81d3a2-7677-4f3a-b6b0-7a102d6600cd" />
+<img width="3600" height="1500" alt="04_fft_contraccion_01" src="https://github.com/user-attachments/assets/32c9edbc-7d3c-422b-be8d-b7be84baf98b" />
+<img width="4169" height="1767" alt="03_segmentos" src="https://github.com/user-attachments/assets/bc74beda-a2c0-4669-9495-fd712d101b05" />
+<img width="4169" height="2366" alt="02_comparacion_filtrado" src="https://github.com/user-attachments/assets/d83663d6-3c61-4d69-8f73-a18a9928f567" />
+<img width="4169" height="1467" alt="01_señal_bruta" src="https://github.com/user-attachments/assets/1b3e461e-50ad-4336-b8a7-099fd3403d41" />
 
 PARTE B - ANÁLISIS DE SEÑAL REAL
 
@@ -327,14 +328,15 @@ Aplicación de la FFT para comparar los espectros de amplitud entre las primeras
 
 ##Resultados
 
-<img width="3600" height="1200" alt="01_espectro_contraccion_02" src="https://github.com/user-attachments/assets/b0ef8200-8931-43f0-b33e-e4946928fe5e" />
-<img width="3600" height="1200" alt="01_espectro_contraccion_01" src="https://github.com/user-attachments/assets/366c4c2b-03e8-4c42-b49a-3eea5bbbc932" />
-<img width="4768" height="1466" alt="04_evolucion_pico_mf_mpf" src="https://github.com/user-attachments/assets/97f50252-c56e-421a-8de8-ac4e503d9688" />
-<img width="3869" height="1766" alt="03_espectros_superpuestos" src="https://github.com/user-attachments/assets/71520ed1-6c0b-426b-b4bc-4a42f31e235a" />
-<img width="3869" height="1467" alt="02_comparacion_primera_ultima" src="https://github.com/user-attachments/assets/9bd4c179-360f-44dd-8690-e14cc3ee4190" />
-<img width="<img width="3600" height="1200" alt="01_espectro_contraccion_04" src="https://github.com/user-attachments/assets/97032343-139b-41c9-a880-a1f8e7fd3f7a" />
-<img width="3600" height="1200" alt="01_espectro_contraccion_03" src="https://github.com/user-attachments/assets/db47f947-3ca6-4b8d-b95b-e9b4c2800b9f" />
-<img width=3600" height="1200" alt="01_espectro_contraccion_05" src="https://github.com/user-attachments/assets/657eecfc-d5e4-4950-b618-f516d8b61b5e" />
+<img width="4768" height="1466" alt="04_evolucion_pico_mf_mpf" src="https://github.com/user-attachments/assets/b97359e6-1cee-4590-adc1-8356feb36a7d" />
+<img width="3869" height="1766" alt="03_espectros_superpuestos" src="https://github.com/user-attachments/assets/1841fda4-9b75-494d-af11-fe39ad5521ae" />
+<img width="3869" height="1467" alt="02_comparacion_primera_ultima" src="https://github.com/user-attachments/assets/1fd8448d-7f8e-4101-a885-ac91d5898ebf" />
+<img width="3600" height="1200" alt="01_espectro_contraccion_05" src="https://github.com/user-attachments/assets/4b2544a2-2da3-43a5-8a3f-b785becb4b45" />
+<img width="3600" height="1200" alt="01_espectro_contraccion_04" src="https://github.com/user-attachments/assets/82f28e32-1fde-4e58-99f8-8a6e0d9f57d8" />
+<img width="3600" height="1200" alt="01_espectro_contraccion_03" src="https://github.com/user-attachments/assets/0226c56a-2349-4ed6-8370-c63eb504f1f0" />
+<img width="3600" height="1200" alt="01_espectro_contraccion_02" src="https://github.com/user-attachments/assets/594b096a-cb47-45fb-852c-76ed7ccdec98" />
+<img width="3600" height="1200" alt="01_espectro_contraccion_01" src="https://github.com/user-attachments/assets/e82c62d0-d442-435d-8c3b-568c5816112a" />
+
 
 **Parámetros:**
 - Frecuencia de muestreo (FS): 1000 Hz  
