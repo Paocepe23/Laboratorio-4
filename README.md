@@ -10,15 +10,263 @@ Comparar el comportamiento de una señal emulada (ideal) frente a una señal rea
 # Metodología del experimento.
 El laboratorio se divide en tres fases:
 ## Fase A
+
+En esta sección se trabaja con una señal EMG sintética generada artificialmente. Primero se carga la señal desde un archivo .h5 y se visualiza en el dominio del tiempo. Luego, la señal se segmenta en varias contracciones simuladas de igual duración.
+
+Posteriormente, para cada segmento se calculan la frecuencia media (MF) y la frecuencia mediana (MPF) mediante la Transformada de Fourier, lo que permite analizar el contenido frecuencial de la señal. Finalmente, se grafican estos parámetros para observar su comportamiento a lo largo de las contracciones, sirviendo como referencia base sin presencia de fatiga muscular.
+
+### Diagrama de flujo
+```mermaid
+flowchart TD
+
+A([Inicio])
+
+%% CONFIG
+A --> B[Configurar parametros FS N DATA_FILE]
+B --> C[Crear OUTPUT_DIR mkdir]
+
+%% CARGA
+C --> D[/Abrir archivo h5 h5py.File/]
+D --> E{¿Carga exitosa?}
+
+E -- No --> F[/Error FileNotFound salir/]
+F --> Z([Fin])
+
+E -- Sí --> G[Extraer canal datos raw channel_1]
+G --> H[Convertir a float flatten astype]
+
+%% INFO
+H --> I[/Print info señal len mean std/]
+
+%% SEÑAL BRUTA
+I --> J[Generar tiempo np.arange FS]
+J --> K[Plot señal plt.plot]
+K --> L[/Guardar PNG señal bruta/]
+
+%% SEGMENTACIÓN
+L --> M[Segmentar señal en N partes]
+
+%% VISUAL SEGMENTOS
+M --> N[Plot segmentos superpuestos]
+N --> O[/Guardar PNG segmentos/]
+
+%% LOOP FFT
+O --> P{¿Quedan segmentos?}
+
+P -- Sí --> Q[FFT np.fft.fft]
+Q --> R[Calcular potencia y frecuencias]
+R --> S[Calcular MF y MPF]
+
+S --> T[Guardar resultados append]
+T --> P
+
+%% POST
+P -- No --> U[Crear DataFrame pd.DataFrame]
+U --> V[/Print tabla resultados/]
+
+%% EVOLUCIÓN
+V --> W[Plot evolucion MF MPF]
+W --> X[/Guardar PNG evolucion/]
+
+%% ESPECTROS FFT
+X --> Y{¿Quedan segmentos?}
+
+Y -- Sí --> Y1[FFT y potencia en dB log10]
+Y1 --> Y2[Plot espectro]
+Y2 --> Y3[/Guardar PNG FFT/]
+Y3 --> Y
+
+%% ANÁLISIS
+Y -- No --> AA[Calcular cambio porcentual MF MPF]
+AA --> AB[/Print resultados y desviacion/]
+
+%% INTERPRETACIÓN
+AB --> AC{¿Cambio menor a 5%?}
+
+AC -- Sí --> AD[Interpretacion señal estable]
+AC -- No --> AE[Interpretacion posible variacion]
+
+%% EXPORTACIÓN
+AD --> AF[Guardar CSV df.to_csv]
+AE --> AF
+
+AF --> AG[Escribir reporte open write]
+
+AG --> Z([Fin])
+```
 Uso de un generador de señales biológicas para establecer una línea base de comportamiento ideal sin ruido.
 ## Fase B 
-<img width="200" height="600" alt="WhatsApp Image 2026-04-16 at 8 07 42 PM" src="https://github.com/user-attachments/assets/13f2d3ca-aecb-453a-b402-6a32acd2b0cf" />
+
+En esta parte se analiza una señal EMG real adquirida de un sujeto durante contracciones musculares repetidas. Inicialmente, la señal es cargada desde un archivo .txt y se aplica un filtro pasa banda (20–450 Hz) para eliminar ruido y artefactos.
+
+Luego, la señal filtrada se divide en contracciones individuales, sobre las cuales se calculan la frecuencia media (MF) y la frecuencia mediana (MPF). Además, se obtiene y grafica la Transformada de Fourier para cada segmento.
+
+Finalmente, se analiza la evolución de estos parámetros, permitiendo identificar posibles signos de fatiga muscular, evidenciados por un desplazamiento del contenido espectral hacia bajas frecuencias.
+
+### Diagrama de flujo
+```mermaid
+flowchart TD
+
+A([Inicio])
+
+%% CONFIGURACIÓN
+A --> B[Configurar FS NUM_CONTRACCIONES DATA_FILE]
+B --> C[Crear carpeta OUTPUT_DIR mkdir]
+
+%% CARGA
+C --> D[/Cargar señal np.loadtxt skiprows usecols/]
+D --> E{¿Carga exitosa?}
+
+E -- No --> F[/Error FileNotFound y salir/]
+F --> Z([Fin])
+
+E -- Sí --> G[Mostrar estadisticas np.min np.max np.mean]
+
+%% SEÑAL BRUTA
+G --> H[Crear vector tiempo np.arange FS]
+H --> I[Graficar señal bruta plt.plot]
+I --> J[/Guardar PNG señal bruta/]
+
+%% FILTRADO
+J --> K[Definir nyquist FS dividido 2]
+K --> L[Diseñar filtro butter orden 4]
+L --> M[Filtrar señal sosfiltfilt]
+
+M --> N[Graficar señal original vs filtrada]
+N --> O[/Guardar PNG comparacion/]
+
+%% SEGMENTACIÓN
+O --> P[Segmentar señal len dividido N]
+P --> Q[Mostrar duracion por segmento]
+
+Q --> R[Graficar segmentos superpuestos]
+R --> S[/Guardar PNG segmentos/]
+
+%% FFT Y MÉTRICAS
+S --> T{¿Quedan segmentos?}
+
+T -- Sí --> U[FFT np.fft.fft]
+U --> V[Calcular potencia abs squared]
+
+V --> W[Calcular MF sum freqs por potencia]
+W --> X[Calcular MPF acumulado]
+
+X --> Y[Guardar resultados append lista]
+
+Y --> Z1[Convertir potencia a dB log10]
+Z1 --> Z2[Graficar espectro FFT]
+Z2 --> Z3[/Guardar PNG FFT/]
+
+Z3 --> T
+
+%% POST
+T -- No --> AA[Crear DataFrame pd.DataFrame]
+AA --> AB[/Mostrar tabla df.to_string/]
+
+%% EVOLUCIÓN
+AB --> AC[Extraer MF y MPF del DataFrame]
+AC --> AD[Graficar evolucion plt.plot]
+AD --> AE[/Guardar PNG evolucion/]
+
+%% ANÁLISIS FATIGA
+AE --> AF[Calcular cambio porcentual MF MPF]
+AF --> AG{¿Disminuyen mas de 5 por ciento?}
+
+AG -- Sí --> AH[/Fatiga detectada/]
+AG -- No --> AI[/Sin fatiga clara/]
+
+%% EXPORTACIÓN
+AH --> AJ[Guardar CSV df.to_csv]
+AI --> AJ
+
+AJ --> AK[Escribir reporte open write]
+
+AK --> Z([Fin])
+```
+<img width="500" height="600" alt="WhatsApp Image 2026-04-16 at 8 07 42 PM" src="https://github.com/user-attachments/assets/13f2d3ca-aecb-453a-b402-6a32acd2b0cf" />
 
 Obtencion de la señal en el laboratorio.
 
 Adquisición de EMG sobre el antebrazo realizando contracciones repetidas hasta el fallo muscular.
 
 ## Fase C 
+
+En esta sección se profundiza en el análisis en frecuencia de la señal EMG real utilizando la Transformada Rápida de Fourier (FFT). Se calcula el espectro de amplitud para cada contracción, identificando parámetros clave como:
+
+- Frecuencia media (MF)
+- Frecuencia mediana (MPF)
+- Frecuencia pico del espectro
+
+Se comparan los espectros entre contracciones iniciales y finales, y se analizan de forma conjunta para observar la evolución del contenido frecuencial.
+
+Este análisis permite evidenciar el fenómeno de fatiga muscular a través del desplazamiento del espectro hacia frecuencias más bajas, lo cual está asociado a cambios fisiológicos en el músculo durante el esfuerzo prolongado.
+
+### Diagrama de flujo
+```mermaid
+flowchart TD
+    A([Inicio])
+
+    %% CONFIGURACIÓN
+    A --> B[Configurar parametros FS N DATA_FILE]
+    B --> C[Crear OUTPUT_DIR mkdir]
+
+    %% CARGA
+    C --> D[/Cargar señal np.loadtxt/]
+    D --> E{¿Carga exitosa?}
+
+    E -- No --> F[/Error FileNotFound salir/]
+    F --> Z([Fin])
+
+    E -- Sí --> G[Filtrar señal butter sosfiltfilt]
+
+    %% SEGMENTACIÓN
+    G --> H[Segmentar señal len dividido N]
+
+    %% LOOP FFT
+    H --> I{¿Quedan segmentos?}
+
+    I -- Sí --> J[FFT np.fft.fft]
+    J --> K[Calcular MF MPF Pico]
+
+    K --> L[Guardar append listas]
+
+    L --> M[Plot plt.plot]
+    M --> N[/Guardar PNG plt.savefig/]
+
+    N --> I
+
+    %% POST
+    I -- No --> O[Crear DataFrame pd.DataFrame]
+    O --> P[/Print df.to_string/]
+
+    %% COMPARACIÓN
+    P --> Q[Seleccionar espectros 0 y final]
+    Q --> R[Plot comparacion plt.plot]
+    R --> S[/Guardar PNG comparacion/]
+
+    %% SUPERPOSICIÓN
+    S --> T[Plot multiple espectros]
+    T --> U[/Guardar PNG superpuesto/]
+
+    %% EVOLUCIÓN
+    U --> V[Plot evolucion MF MPF Pico]
+    V --> W[/Guardar PNG evolucion/]
+
+    %% ANÁLISIS
+    W --> X[Delta valores final menos inicial]
+    X --> Y{¿MF o MPF disminuyen?}
+
+    Y -- Sí --> Y1[/Print fatiga detectada/]
+    Y -- No --> Y2[/Print sin fatiga/]
+
+    %% EXPORTACIÓN
+    Y1 --> AA[Guardar CSV df.to_csv]
+    Y2 --> AA
+
+    AA --> AB[Escribir reporte open write]
+
+    AB --> Z([Fin])
+```
 Aplicación de la FFT para comparar los espectros de amplitud entre las primeras contracciones "músculo fresco" y las últimas "músculo fatigado".
 # Marco conceptual
 ##Fisiología.
@@ -92,3 +340,71 @@ Durante la elaboración de este laboratorio se utilizaron herramientas de inteli
 Estas herramientas se emplearon únicamente como asistencia técnica para estructuración del documento, aclaración de conceptos y verificación de implementaciones en Python.
 
 Los diagramas de flujo fueron generados inicialmente mediante herramientas compatibles con Mermaid , y posteriormente ajustados para representar la lógica del programa.
+# Cómo ejecutar el proyecto
+Para ejecutar este laboratorio es necesario tener todos los archivos en una misma carpeta y contar con Python previamente instalado en el sistema.
+
+> ⚠️ Todos los archivos deben estar en la misma carpeta para evitar errores de lectura de datos.
+
+### 1. Estructura del proyecto
+
+Asegúrate de que todos los archivos se encuentren en el mismo directorio:
+
+``` id="treefix"
+/Carpeta_designada
+│
+├── Parte A.py
+├── Parte B.py
+├── Parte C.py
+├── opensiseñalda.h5
+├── opensiseñalda.txt
+└── (carpetas de resultados se generan automáticamente)
+### 2. Instalación de dependencias
+
+Los scripts utilizan las siguientes librerías de Python:
+
+- numpy  
+- matplotlib  
+- pandas  
+- scipy  
+- h5py  
+
+Instálalas ejecutando el siguiente comando en la terminal:
+
+```bash
+pip install numpy matplotlib pandas scipy h5py
+```
+### 3. Ejecución de los scripts
+Cada parte del laboratorio se ejecuta de forma independiente:
+
+```bash
+python "Parte A.py"
+python "Parte B.py"
+python "Parte C.py"
+```
+### 4. Resultados generados
+Al ejecutar cada script, se crearán automáticamente carpetas con los resultados:
+- `resultados_parte_a/`
+- `resultados_parte_b/`
+- `resultados_parte_c/`
+En estas carpetas encontrarás:
+
+Gráficas en formato .png
+Tablas de resultados en .csv
+Reportes en .txt
+
+### 3. Notas importantes
+
+- Los nombres de los archivos de señal (`opensiseñalda.h5` y `opensiseñalda.txt`) están definidos directamente en los scripts.  
+  Sin embargo, estos pueden modificarse fácilmente editando la variable `DATA_FILE` en cada archivo `.py` en caso de que se desee trabajar con otros datos.
+
+- El proyecto está diseñado para trabajar con:
+  - Archivos `.h5` → para la señal EMG emulada (Parte A)  
+  - Archivos `.txt` → para la señal EMG real (Partes B y C)  
+
+  Usar otros formatos requeriría modificar la forma en que se cargan los datos en el código.
+
+- Si ocurre un error de archivo no encontrado, verifica que todos los archivos estén en la misma carpeta o que la ruta especificada en `DATA_FILE` sea correcta.
+
+- Los scripts están configurados con una frecuencia de muestreo de **1000 Hz**, la cual también puede ajustarse directamente en el código si se utilizan señales con diferentes características.
+
+---
