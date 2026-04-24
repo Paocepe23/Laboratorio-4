@@ -98,15 +98,19 @@ for i, seg in enumerate(segmentos):
     espectros.append((freqs, magnitud))
     resultados.append({'Contraccion': i+1, 'MF (Hz)': mf, 'MPF (Hz)': mpf, 'Pico (Hz)': pico})
 
+    # CAMBIO 1: conversión a dB
+    magnitud_db = 20 * np.log10(magnitud / np.max(magnitud) + 1e-10)
+
     plt.figure(figsize=(12, 4))
-    plt.plot(freqs, magnitud, linewidth=1, color='navy')
+    plt.plot(freqs, magnitud_db, linewidth=1, color='navy')  # CAMBIO 2
     plt.axvline(pico, color='red', linestyle='--', label=f'Pico: {pico:.1f} Hz')
     plt.axvline(mf,   color='orange', linestyle='--', label=f'MF: {mf:.1f} Hz')
     plt.axvline(mpf,  color='green', linestyle='--', label=f'MPF: {mpf:.1f} Hz')
     plt.xlabel('Frecuencia (Hz)')
-    plt.ylabel('Magnitud')
+    plt.ylabel('Magnitud (dB)')  # CAMBIO 3
     plt.title(f'FFT - Contracción {i+1}')
     plt.xlim([0, FS/2])
+    plt.ylim([-80, 5])  # CAMBIO 4
     plt.legend()
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / f'01_espectro_contraccion_{i+1:02d}.png', dpi=300)
